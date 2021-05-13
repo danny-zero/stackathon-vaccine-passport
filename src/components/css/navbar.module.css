@@ -1,0 +1,10 @@
+.logo {
+    position: relative;
+    height: 5rem;
+}
+
+.justifyContentEnd {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

@@ -1,0 +1,71 @@
+* {
+  font-family: 'Share Tech Mono', monospace;
+  /* background-color: rgba(21, 21, 21, 0.543); */
+}
+
+.splash-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.trackerContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.app__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.app__left {
+  flex: 0.9;
+}
+
+.app__stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table {
+  margin-top: 20px;
+  overflow: scroll;
+  height: 400px;
+  color: #6a5d5d;
+}
+
+.table tr {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table td {
+  padding: 0.5rem;
+}
+
+.table tr:nth-of-type(odd) {
+  background-color: white;
+}
+
+.graph__container {
+  height: 200px;
+  width: 400px;
+}
+
+.map {
+  height: 500px;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 20px;
+  margin-top: 16px;
+  box-shadow: 0 0 8px -4px rgb(0, 0, 0, 0.5);
+}
+
+@media (max-width: 990px) {
+  .trackerContainer {
+    flex-direction: column;
+  }
+}

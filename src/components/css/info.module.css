@@ -1,0 +1,35 @@
+.userProfile {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.userProfileInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* margin-top: 5rem; */
+}
+
+.uploadPhoto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.profilePhoto {
+  height: 20rem;
+  margin: 2rem;
+}
+
+.placeholderPhoto {
+  height: 100px;
+  width: 100px;
+  margin: 2rem;
+}
+
+.btnSignUp {
+  background-color: #4b90e2;
+}

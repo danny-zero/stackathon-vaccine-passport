@@ -1,0 +1,35 @@
+.container {
+  height: 75vh;
+}
+
+.container h1{
+  text-align: center;
+}
+
+.loginSignUp {
+  cursor: pointer;
+  text-decoration: underline;
+  color: gray;
+}
+
+.incorrectAlert {
+  text-align: center;
+  color: red;
+}
+
+.btnSignUp {
+  background-color: #4b90e2;
+  border-style: none;
+}
+
+.col1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
