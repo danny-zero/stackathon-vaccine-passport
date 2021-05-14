@@ -5,7 +5,7 @@ const { models: { User, Vaccine }} = require('../../../db');
 
 router.post('/', async(req, res, next)=> {
   try {
-    console.log("made it to post?", req.body)
+    //console.log("made it to post?", req.body)
     const email = req.body.email
     const password = req.body.password
     res.send({ token: await User.authenticate(email, password)});

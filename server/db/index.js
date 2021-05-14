@@ -92,18 +92,18 @@ User.addHook('beforeSave', async function(user) {
 
 User.byToken = async(token)=> {
   try {
-    console.log("byToken ran token = ", token)
+    //console.log("byToken ran token = ", token)
     const payload = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-    console.log("payload?", payload)
+    //console.log("payload?", payload)
     const user = await User.findByPk(
       payload,
       {
         include: [Vaccine]
       }
     );
-    console.log("ACHEI", user)
+    //console.log("ACHEI", user)
     if(user){
-      console.log("if", user)
+      //console.log("if", user)
       return {user};
     }
     const error = Error('bad credentials');
@@ -118,22 +118,22 @@ User.byToken = async(token)=> {
 };
 
 User.authenticate = async(email, password)=> {
-    console.log("email?", email)
-    console.log("password", password)
+    //console.log("email?", email)
+    //console.log("password", password)
     const user = await User.findOne({
         where: {
         email
         }
     });
-    console.log("hello user", user)
+    //console.log("hello user", user)
     const correct = user && await bcrypt.compare(password, user.password);
-    console.log("hello", correct)
+    //console.log("hello", correct)
 
     if (correct) {
-        console.log("authenticate ran, id = ", user.id)
-        console.log("JWT? why is this not working?", process.env.JWT)
+        //console.log("authenticate ran, id = ", user.id)
+        //console.log("JWT? why is this not working?", process.env.JWT)
         const token = await jwt.sign(user.id, process.env.ACCESS_TOKEN_SECRET)
-        console.log("token created?", token)
+        //console.log("token created?", token)
         return token
   } else {
     const error = Error('bad credentials');
