@@ -6,7 +6,7 @@ const { models: { User, Vaccine }} = require('../../../db');
 router.post('/', async(req, res, next)=> {
   try {
     //console.log("made it to post?", req.body)
-    const email = req.body.email
+    const email = req.body.email.toLowerCase()
     const password = req.body.password
     res.send({ token: await User.authenticate(email, password)});
   }
@@ -34,7 +34,7 @@ router.post('/createUser', async(req, res, next)=> {
     //console.log("made it to post?", req.body) //is there a way to secure the password here? it doesn't seem secure to send it in plain text to the server to be create
     const firstName = req.body.firstName
     const lastName = req.body.lastName
-    const email = req.body.email
+    const email = req.body.email.toLowerCase()
     const password = req.body.password
     const user = await User.create({firstName, lastName, email, password})
     //console.log('user create?', user)
