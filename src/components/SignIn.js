@@ -27,9 +27,9 @@ const SignIn = ({ incorrect, signIn, signUp, setSignUp, passwordType, setPasswor
              <Row>
              <Col className={styles.col1}>
              <img className="animate__animated animate__rotateIn"src="public/logo_reversed.png" />
-             <h1>Log In</h1>
              </Col>
              <Col className={styles.col2}>
+                <h1>Log In</h1>
                 <Form onSubmit={onSubmit}>
                     <Form.Group controlId="exampleForm.ControlInput1">
                         <Form.Label>Email: </Form.Label>

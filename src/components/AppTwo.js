@@ -9,7 +9,6 @@ import SignIn from './SignIn';
 import Tracker from './COVID-Tracker/Tracker';
 import Info from './Info';
 import QR from './QR';
-import ImageForm from './ImageForm';
 import Splash from './Splash';
 
 function App() {
