@@ -19,13 +19,16 @@ const SignIn = ({ incorrect, signIn, signUp, setSignUp, passwordType, setPasswor
 
     return (
         <div className={styles.container}>
-            <h1>Log In</h1>
+            {/* <h1>Log In</h1> */}
             {
                 incorrect ? (<p className={styles.incorrectAlert}>Incorrect username/password</p>) : null
             }
              <Container>
              <Row>
-             <Col className={styles.col1}><img className="animate__animated animate__rotateIn"src="public/logo_reversed.png" /></Col>
+             <Col className={styles.col1}>
+             <img className="animate__animated animate__rotateIn"src="public/logo_reversed.png" />
+             <h1>Log In</h1>
+             </Col>
              <Col className={styles.col2}>
                 <Form onSubmit={onSubmit}>
                     <Form.Group controlId="exampleForm.ControlInput1">

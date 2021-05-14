@@ -23,10 +23,13 @@ const SignUp = ({ createUser, signUp, setSignUp, passwordType, setPasswordType }
 
     return (
         <div className={styles.container}>
-            <h1>Sign Up</h1>
+            {/* <h1>Sign Up</h1> */}
              <Container>
              <Row>
-             <Col className={styles.col1}><img className="animate__animated animate__rotateIn"src="public/logo_reversed.png" /></Col>
+             <Col className={styles.col1}>
+             <img className="animate__animated animate__rotateIn"src="public/logo_reversed.png" />
+             <h1>Sign Up</h1>
+             </Col>
              <Col className={styles.col2}>
                 <Form onSubmit={onSubmit}>
                     <Form.Group controlId="exampleForm.ControlInput1">
