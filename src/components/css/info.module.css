@@ -3,6 +3,7 @@
     justify-content: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    padding: 4px;
 }
 
 .userProfileInfo {
@@ -20,7 +21,7 @@
 }
 
 .profilePhoto {
-  height: 20rem;
+  height: 15rem;
   margin: 2rem;
 }
 
