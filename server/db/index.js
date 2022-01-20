@@ -86,6 +86,7 @@ const Vaccine = conn.define('vaccine', {
 
 User.addHook('beforeSave', async function(user) {
     if(user._changed.has('password')) {
+        console.log('before save ran', user.password)
         user.password = await bcrypt.hash(user.password, 5)
     }
 });
@@ -118,8 +119,8 @@ User.byToken = async(token)=> {
 };
 
 User.authenticate = async(email, password)=> {
-    //console.log("email?", email)
-    //console.log("password", password)
+    console.log("email?", email)
+    console.log("password", password)
     const user = await User.findOne({
         where: {
         email
@@ -127,13 +128,13 @@ User.authenticate = async(email, password)=> {
     });
     //console.log("hello user", user)
     const correct = user && await bcrypt.compare(password, user.password);
-    //console.log("hello", correct)
+    console.log("hello", correct)
 
     if (correct) {
-        //console.log("authenticate ran, id = ", user.id)
+        console.log("authenticate ran, id = ", user.id)
         //console.log("JWT? why is this not working?", process.env.JWT)
         const token = await jwt.sign(user.id, process.env.ACCESS_TOKEN_SECRET)
-        //console.log("token created?", token)
+        console.log("token created?", token)
         return token
   } else {
     const error = Error('bad credentials');

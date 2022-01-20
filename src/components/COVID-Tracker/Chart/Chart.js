@@ -19,13 +19,16 @@ const Chart = ({ data: {confirmed, recovered, deaths, flag}, country, confArr })
 
     useEffect(() => {
         const fetchDailyData = async () => {
+            const present = new Date();
+            present.setMonth(present.getMonth() - 6);
+            const past = present.toLocaleDateString();
             if (country === 'global' || !country) {
                 let { data } = await axios.get('/api/tracker/daily');
-                data = data.filter(elem => new Date(elem.date) > new Date('03-11-21'))
+                data = data.filter(elem => new Date(elem.date) > new Date(past))
                 setDailyData(data)
             } else {
                 let { data } = await axios.get(`/api/tracker/country/${country}`);
-                data = data.filter(elem => new Date(elem.date) > new Date('03-11-21'))
+                data = data.filter(elem => new Date(elem.date) > new Date(past))
                 setDailyData(data)
             }
         }
