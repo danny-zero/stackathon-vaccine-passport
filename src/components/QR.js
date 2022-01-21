@@ -54,7 +54,7 @@ const QR = ({auth}) => {
                 } else if (key === 'booster') {
                     result += `\nBooster: ${vax[key]}`
                 } else if (key === 'cdcCard') {
-                    result += `\nCDC Card: https://stackathon-vaccine-passport.herokuapp.com/${vax[key]}`
+                    result += `\nCDC Card: https://stackathon-vaccine-passport.herokuapp.com${vax[key]}`
                     //result += `\nCDC Card: https://static.wikia.nocookie.net/marvel_dc/images/4/4b/Batman_Vol_3_86_Textless.jpg/revision/latest?cb=20200502132734}`
                 }
             }
