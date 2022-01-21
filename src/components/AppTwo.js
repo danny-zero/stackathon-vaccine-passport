@@ -8,6 +8,7 @@ import SignUp from './SignUp';
 import SignIn from './SignIn';
 import Tracker from './COVID-Tracker/Tracker';
 import Info from './Info';
+import EditInfo from './EditInfo';
 import QR from './QR';
 import Splash from './Splash';
 
@@ -127,6 +128,12 @@ function App() {
                     {
                         !auth.user ? (<Redirect to="/" />)
                         : <Info auth={auth} setAuth={setAuth}/>
+                    }
+                </Route>
+                <Route path="/edit-info">
+                    {
+                        !auth.user ? (<Redirect to="/" />)
+                        : <EditInfo auth={auth} setAuth={setAuth}/>
                     }
                 </Route>
                 <Route path="/tracker"><Tracker /></Route>

@@ -75,6 +75,10 @@ const Vaccine = conn.define('vaccine', {
     type: STRING,
     defaultValue: null
   },
+  booster: {
+    type: STRING,
+    defaultValue: null
+  },
   cdcCard: {
     type: STRING
   },

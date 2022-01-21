@@ -9,6 +9,7 @@ const Info = ({ auth, setAuth }) => {
     const [vaccine, setVaccine] = useState('');
     const [firstDose, setFirstDose] = useState('');
     const [secondDose, setSecondDose] = useState('');
+    const [booster, setBooster] = useState('');
     const [showCard, setShowCard] = useState(false)
 
     const [file, setFile] = useState();
@@ -51,7 +52,7 @@ const Info = ({ auth, setAuth }) => {
         if (mRNA.includes(vaccine)) {
             //console.log('second dose:', secondDose)
         }
-        await createVaccine({id: auth.user.id, vaccine, firstDose, secondDose})
+        await createVaccine({id: auth.user.id, vaccine, firstDose, secondDose, booster})
         await postImage({image: file});
     }
 
@@ -92,12 +93,15 @@ const Info = ({ auth, setAuth }) => {
                             </div>
                         )
                     }
-                    
+                    <Nav.Link href="#/edit-info">Edit Info</Nav.Link>
                     <h3>Name: {auth.user.firstName} {auth.user.lastName}</h3>
                     <h3>Manufacturer: {auth.user.vaccine.name}</h3>
                     <h3>First Dose: {auth.user.vaccine.firstDose}</h3>
                     {
                         auth.user.vaccine.secondDose ? (<h3>Second Dose: {auth.user.vaccine.secondDose}</h3>) : null
+                    }
+                    {
+                        auth.user.vaccine.booster ? (<h3>Booster: {auth.user.vaccine.booster}</h3>) : null
                     }
                     <Button className={styles.btnSignUp} onClick={() => setShowCard(!showCard)}>View Card</Button>
 
@@ -129,13 +133,17 @@ const Info = ({ auth, setAuth }) => {
                                         <Form.Label>Date of First Dose</Form.Label>
                                         <Form.Control required type="date" placeholder="mm/dd/yyyy" onChange={(e) => setFirstDose(e.target.value)}/>
                                         <Form.Label>Date of Second Dose</Form.Label>
-                                        <Form.Control required type="date" placeholder="mm/dd/yyyy" onChange={(e) => setSecondDose(e.target.value)}/>
+                                        <Form.Control type="date" placeholder="mm/dd/yyyy" onChange={(e) => setSecondDose(e.target.value)}/>
+                                        <Form.Label>Date of Booster</Form.Label>
+                                        <Form.Control type="date" placeholder="mm/dd/yyyy" onChange={(e) => setBooster(e.target.value)}/>
                                     </Form.Group>
                                 ) : vaccine === 'J&J' ? 
                                 (
                                     <Form.Group controlId="exampleForm.ControlInput1">
                                         <Form.Label>Date of Dose</Form.Label>
                                         <Form.Control required type="date" placeholder="mm/dd/yyyy" onChange={(e) => setFirstDose(e.target.value)}/>
+                                        <Form.Label>Date of Booster</Form.Label>
+                                        <Form.Control type="date" placeholder="mm/dd/yyyy" onChange={(e) => setBooster(e.target.value)}/>
                                     </Form.Group>
                                 ) : (null)
                             }

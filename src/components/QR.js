@@ -6,7 +6,7 @@ import styles from './css/qr.module.css';
 // DO NOT USE NATIVE IOS QR SCANNER, IT DOESN'T WORK FOR SOME REASON, USE ONE DOWNLOADED FROM APP STORE
 
 const QR = ({auth}) => {
-    //console.log('QR auth', auth);
+    console.log('QR auth', auth);
 
     const withinAYear = (firstDose) => {
         //https://replit.com/@zenturtle/older-than-one-year#index.js
@@ -51,6 +51,11 @@ const QR = ({auth}) => {
                     result += `\nFirst Dose: ${vax[key]}`
                 }  else if (key === 'secondDose') {
                     result += `\nSecond Dose: ${vax[key]}`
+                } else if (key === 'booster') {
+                    result += `\nBooster: ${vax[key]}`
+                } else if (key === 'cdcCard') {
+                    result += `\nCDC Card: https://stackathon-vaccine-passport.herokuapp.com/${vax[key]}`
+                    //result += `\nCDC Card: https://static.wikia.nocookie.net/marvel_dc/images/4/4b/Batman_Vol_3_86_Textless.jpg/revision/latest?cb=20200502132734}`
                 }
             }
         }

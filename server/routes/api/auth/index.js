@@ -48,19 +48,40 @@ router.post('/createUser', async(req, res, next)=> {
 
 router.post('/createVaccine/:id', async(req, res, next)=> {
   try {
-    //console.log(req.body) //this is working, I am getting {id: , vaccine: , firstDose: , secondDose: }  
+    // console.log('REQ.BODY', req.body) //this is working, I am getting {id: , vaccine: , firstDose: , secondDose: }  
     const user = await User.findByPk(req.params.id);
     //console.log('found the user for the vaccine?', user)
     const vaccineName = req.body.vaccine;
     const firstDose = req.body.firstDose;
     let secondDose = null;
+    let booster = null;
     if (req.body.secondDose.length > 0) {
       secondDose = req.body.secondDose
     }
-    const vaccine = await Vaccine.create({name: vaccineName, firstDose, secondDose});
+    if (req.body.booster.length > 0) {
+      booster = req.body.booster
+    }
+    const vaccine = await Vaccine.create({name: vaccineName, firstDose, secondDose, booster});
     vaccine.userId = user.id
     await vaccine.save()
     //console.log('was the vaccine created and is there a user?', vaccine) 
+    res.send(vaccine)
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+
+router.put('/editVaccine/:id', async(req, res, next)=> {
+  try {
+    console.log('REQ.BODY', req.body)
+    const vaccine = await Vaccine.findOne({where: {userId: req.params.id}})
+    console.log('found the vaccine?', vaccine)
+    console.log('vaccine name', vaccine.name);
+    if (req.body.secondDose !== null) vaccine.secondDose = req.body.secondDose;
+    if (req.body.booster !== null) vaccine.booster = req.body.booster;
+    await vaccine.save()
+    console.log('was the vaccine edited?', vaccine) 
     res.send(vaccine)
   }
   catch(ex){
