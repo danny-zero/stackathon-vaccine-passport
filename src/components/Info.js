@@ -13,7 +13,7 @@ const Info = ({ auth, setAuth }) => {
     const [showCard, setShowCard] = useState(false)
 
     const [file, setFile] = useState();
-    const [imagePath, setImagePath] = useState(() => auth.user.vaccine.cdcCard);
+    const [imagePath, setImagePath] = useState();
     const [profilePhoto, setProfilePhoto] = useState();
 
     const postImage = async ({ image }) => {
