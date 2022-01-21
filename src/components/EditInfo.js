@@ -26,7 +26,7 @@ const Info = ({ auth, setAuth }) => {
         const formData = new FormData();
         formData.append('image', image);
 
-        const result = await axios.post(`/api/images/${auth.user.id}`, formData, { headers: {'Content-Type': 'multipart/form-data'}})
+        const result = await axios.put(`/api/images/${auth.user.id}`, formData, { headers: {'Content-Type': 'multipart/form-data'}})
         //console.log('result.data', result.data.imagePath)
         setImagePath(result.data.imagePath)
         return result.data;
@@ -58,7 +58,7 @@ const Info = ({ auth, setAuth }) => {
         console.log('second dose inside submit:', secondDose)
         console.log('booster inside submit:', booster)
         await editVaccine({id: auth.user.id, vaccine, firstDose, secondDose, booster})
-        // await postImage({image: file});
+        await postImage({image: file});
         history.push('/info');
     }
 
@@ -105,9 +105,9 @@ const Info = ({ auth, setAuth }) => {
                                     </Form.Group>
                                 ) : (null)
                             }
-                            {/* <Form.Group>
+                            <Form.Group>
                                 <Form.File required label="Upload Proof of Vaccination" onChange={fileSelected}/>
-                            </Form.Group> */}
+                            </Form.Group>
                             <Button className={styles.btnSignUp} type="submit">Save</Button>
                         </Form>
                     </Container>

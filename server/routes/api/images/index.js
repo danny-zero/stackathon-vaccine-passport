@@ -50,6 +50,33 @@ router.post('/:id', upload.single('image'), async (req, res, next) => {
     }
 });
 
+
+router.put('/:id', upload.single('image'), async (req, res, next) => {
+    try {
+        const file = req.file; //multer stores file in uploads folder
+        console.log('file object', file)
+
+        const result = await uploadFile(file) //send file to S3 and wait for it to be successful
+        console.log('result', result)
+        await unlinkFile(file.path)
+
+        //find user and add this to their data model: cdcCard: `/api/images/${result.Key}`
+        const vaccine = await Vaccine.findOne({
+            where: {
+                userId: req.params.id
+            }
+        })
+        vaccine.cdcCard = `/api/images/${result.Key}`
+        await vaccine.save();
+
+        res.send({imagePath: `/api/images/${result.Key}`})
+        //res.send(user)
+    } catch (error) {
+        console.log('deu merda aqui no POST', error)
+        next(error)
+    }
+});
+
 router.post('/profile-photo/:id', upload.single('image'), async (req, res, next) => {
     try {
         console.log('ID', req.params.id)
