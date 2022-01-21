@@ -57,8 +57,8 @@ const Info = ({ auth, setAuth }) => {
         console.log('first dose inside submit:', firstDose)
         console.log('second dose inside submit:', secondDose)
         console.log('booster inside submit:', booster)
-        await editVaccine({id: auth.user.id, vaccine, firstDose, secondDose, booster})
         await postImage({image: file});
+        await editVaccine({id: auth.user.id, vaccine, firstDose, secondDose, booster})
         history.push('/info');
     }
 

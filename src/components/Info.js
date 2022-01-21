@@ -5,7 +5,7 @@ import styles from './css/info.module.css';
 
 const Info = ({ auth, setAuth }) => {
 
-    //console.log('vaccine info page', auth)
+    console.log('vaccine info page', auth)
     const [vaccine, setVaccine] = useState('');
     const [firstDose, setFirstDose] = useState('');
     const [secondDose, setSecondDose] = useState('');
@@ -13,7 +13,7 @@ const Info = ({ auth, setAuth }) => {
     const [showCard, setShowCard] = useState(false)
 
     const [file, setFile] = useState();
-    const [imagePath, setImagePath] = useState();
+    const [imagePath, setImagePath] = useState(() => auth.user.vaccine.cdcCard);
     const [profilePhoto, setProfilePhoto] = useState();
 
     const postImage = async ({ image }) => {
